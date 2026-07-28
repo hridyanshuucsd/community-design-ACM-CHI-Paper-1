@@ -80,7 +80,7 @@ The multi-user layer is where Value-Centered Framing becomes directly relevant r
 
 ## The Technical Foundation
 
-I am building this on top of my own 3D tool, my trained AI dataset on India and San Diego, and Pascal (github.com/pascalorg/editor), an open-source 3D architectural editor.
+I am building this on top of Pascal (github.com/pascalorg/editor), an open-source 3D architectural editor. As of this writing it has **18,000+ GitHub stars and 2,480 forks**, is MIT-licensed, published as versioned npm packages (`@pascal-app/core`, `@pascal-app/viewer`, `@pascal-app/editor`, `@pascal-app/nodes`), and is under active development (commits as recently as this week) with a Discord community around it. This is real, load-bearing infrastructure, not an abandoned research prototype.
 
 Architecturally, Pascal is a Turborepo monorepo:
 
