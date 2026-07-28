@@ -8,8 +8,6 @@ UC San Diego, Mathematics–Computer Science B.S.
 **Proposed for: ACM CHI 2027 (submission deadline January 2027)**
 **Proposed mentors/collaborators: Mai Thi Nguyen · Steven Dow · Haijun Xia**
 
-*Revision note: this version reinstates Haijun Xia alongside Steven Dow rather than replacing him, corrects the submission target to CHI 2027's January 2027 deadline (about six months out, not six weeks — plenty of runway for the formative study to precede system design per Risk 1), and adds a voice-first interaction mode as a core requirement, not an accessibility afterthought. A dedicated literature-synthesis and paper-architecture pass (methodology critique of prior work, CHI/UIST rigor criteria, an open-source landscape scan, full section-by-section paper structure, and a voice-interface design brief) is being run separately and will be folded in as a follow-up revision.*
-
 ---
 
 ## Why I Am Writing This
@@ -82,7 +80,7 @@ The multi-user layer is where Value-Centered Framing becomes directly relevant r
 
 ## The Technical Foundation
 
-I am building this on top of Pascal (github.com/pascalorg/editor), an open-source 3D architectural editor. As of this writing it has **18,000+ GitHub stars and 2,480 forks**, is MIT-licensed, published as versioned npm packages (`@pascal-app/core`, `@pascal-app/viewer`, `@pascal-app/editor`, `@pascal-app/nodes`), and is under active development (commits as recently as this week) with a Discord community around it. This is real, load-bearing infrastructure, not an abandoned research prototype.
+I am building this on top of my own 3D tool, my trained AI dataset on India and San Diego, and Pascal (github.com/pascalorg/editor), an open-source 3D architectural editor.
 
 Architecturally, Pascal is a Turborepo monorepo:
 
