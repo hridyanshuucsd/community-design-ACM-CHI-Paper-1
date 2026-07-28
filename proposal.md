@@ -8,8 +8,6 @@ UC San Diego, Mathematics–Computer Science B.S.
 **Proposed for: ACM CHI 2027 (submission deadline January 2027)**
 **Proposed mentors/collaborators: Mai Thi Nguyen · Steven Dow · Haijun Xia**
 
-*Revision note: this version reinstates Haijun Xia alongside Steven Dow rather than replacing him, corrects the submission target to CHI 2027's January 2027 deadline (about six months out, not six weeks — plenty of runway for the formative study to precede system design per Risk 1), and adds a voice-first interaction mode as a core requirement, not an accessibility afterthought. A dedicated literature-synthesis and paper-architecture pass (methodology critique of prior work, CHI/UIST rigor criteria, an open-source landscape scan, full section-by-section paper structure, and a voice-interface design brief) is being run separately and will be folded in as a follow-up revision.*
-
 ---
 
 ## Why I Am Writing This
