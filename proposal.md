@@ -5,10 +5,10 @@ RESEARCH PROPOSAL
 
 **Hridyanshu**
 UC San Diego, Mathematics–Computer Science B.S.
-**Proposed for: ACM CHI 2028**
-**Proposed mentors/collaborators: Mai Thi Nguyen · Steven Dow**
+**Proposed for: ACM CHI 2027 (submission deadline January 2027)**
+**Proposed mentors/collaborators: Mai Thi Nguyen · Steven Dow · Haijun Xia**
 
-*Revision note: this version replaces the earlier draft's Haijun Xia / Nadir Weibel framing with Steven Dow, and retargets the submission cycle from CHI 2027 (Sept 2026 deadline) to CHI 2028. The original deadline is roughly six weeks from today, which is not compatible with this proposal's own methodological commitment that the formative study must precede system design (Risk 1). CHI 2028 gives a real year: formative study and IRB this fall/winter, system build through spring, main study in late spring/summer, submission next September.*
+*Revision note: this version reinstates Haijun Xia alongside Steven Dow rather than replacing him, corrects the submission target to CHI 2027's January 2027 deadline (about six months out, not six weeks — plenty of runway for the formative study to precede system design per Risk 1), and adds a voice-first interaction mode as a core requirement, not an accessibility afterthought. A dedicated literature-synthesis and paper-architecture pass (methodology critique of prior work, CHI/UIST rigor criteria, an open-source landscape scan, full section-by-section paper structure, and a voice-interface design brief) is being run separately and will be folded in as a follow-up revision.*
 
 ---
 
@@ -18,9 +18,9 @@ I have spent the last several months building CLARO, a 3D spatial intelligence p
 
 They can show up to the town hall. They can fill out a comment card. They can speak for two minutes into a microphone. Then the professionals go back and do whatever they were going to do anyway.
 
-This proposal is about fixing that. Specifically, I want to build a novel multi-user, AI-assisted 3D design tool that lets a community group design built space together — not comment on someone else's design, but build their own, with all the zoning rules built in automatically, producing a real architectural proposal they can put on the table as a legitimate alternative to what a developer is offering.
+This proposal is about fixing that. Specifically, I want to build a novel multi-user, AI-assisted, **voice-first** 3D design tool that lets a community group design built space together — not comment on someone else's design, but build their own, with all the zoning rules built in automatically, producing a real architectural proposal they can put on the table as a legitimate alternative to what a developer is offering. Voice-first is not a convenience feature here. A resident who has never touched CAD software should be able to say "put the entrance on the park side" and see it happen, the same way they'd say it to an architect standing next to them. The 3D view stays as the shared visual ground truth; voice is how a layperson actually acts on it.
 
-I am writing to you, Mai, because this is the computational form of the problem your research is about. I am writing to you, Steven, because Design for San Diego already proved that San Diegans will show up to co-design solutions to their own housing crisis when the process is built right — and because your lab's work on feedback exchange and value-centered convergence in civic design is the closest existing empirical foundation for what I want this tool to do. Between the two of you, this project has both the community legitimacy and the methodological rigor it needs to be more than a demo.
+I am writing to you, Mai, because this is the computational form of the problem your research is about. I am writing to you, Steven, because Design for San Diego already proved that San Diegans will show up to co-design solutions to their own housing crisis when the process is built right — and because your lab's work on feedback exchange and value-centered convergence in civic design is the closest existing empirical foundation for what I want this tool to do. And I am writing to you, Haijun, because a voice-first interface for a domain this constrained cannot be a fixed command grammar — it has to be generated from the same live constraint graph your malleable-UI work argues an interface should come from, and your Spacetime work on multi-user collaborative 3D editing is exactly the multi-user architecture this needs. Between the three of you, this project has the community legitimacy, the feedback/convergence methodology, and the interface theory it needs to be more than a demo.
 
 I am also self-funding the engineering and the entire R&D. I have my own funds and donors for everything I do. I want to be upfront about that. I am not asking for lab resources or research budgets. I am asking for your guidance, your expertise, and your access to the communities and city processes that would make this real.
 
@@ -74,6 +74,8 @@ Concretely: if a wall exceeds the height envelope, the system does not just refu
 
 The multi-user layer is where Value-Centered Framing becomes directly relevant rather than just a related-work citation. Multiple community members edit the shared 3D model simultaneously. Disagreement is spatially visible — if two people move the same wall in opposite directions, a conflict marker appears. Dow et al.'s finding that surfacing *why* someone wants something (their underlying value — proximity to the park, noise concerns, accessibility) produces more inclusive convergence than raw preference aggregation is a direct, testable design hypothesis here: does value-surfacing before spatial negotiation produce better convergence on a *continuous, constrained* design artifact the same way it did on a discrete list of park amenities? That is an open empirical question their CI'25 paper does not answer, and one this paper is positioned to answer first.
 
+**Layer 2.5 — Voice as the primary input modality.** The 3D scene is the shared ground truth; voice is how most participants will actually act on it. This is where Haijun's malleable/generative UI framework does its second job in this paper: the same argument that a visual interface's affordances should be generated from the live constraint graph, not a fixed menu, applies directly to voice. A fixed voice command grammar ("move wall," "add door") would just relocate the expertise gap into "knowing the magic words." Instead, the set of voice actions available at any moment should be a function of the same constraint graph driving Layer 1 and the same feedback spectrum driving Layer 2 — if the site is commercial-only, "make the ground floor an apartment" isn't a command the system silently ignores or misinterprets, it's a request the system can immediately explain is unavailable and why, in the same actionability spectrum VizCrit describes (here spoken rather than annotated). Ambiguous or underspecified voice input ("move the wall over there") resolves against the same scene graph and the current selection/gaze state Spacetime already tracks for multi-user editing, rather than requiring precise CAD vocabulary. This makes voice-first not a bolt-on accessibility mode but a third rendering surface for the same constraint-reactive interface layer — text/visual, spatial/geometric, and spoken, all generated from one underlying model.
+
 **Layer 3 — Proposal export.** When the group is satisfied, the system exports a submittable proposal package: a plan view at standard architectural scale, a 3D rendered elevation, a constraint compliance certificate, a plain-language summary of design decisions and why they are permissible, and the underlying editable Pascal scene file (with an IFC — Industry Foundation Classes — export path, so it is directly usable by any architect's or contractor's existing BIM software, not a proprietary dead end). This is not an image. It is a design with the same formal properties as a professionally-drawn proposal.
 
 ---
@@ -111,7 +113,11 @@ VizCrit establishes that computational feedback in a design tool spans a spectru
 
 This paper argues and tests a distinct claim: that in a hard-constrained, multi-user physical design domain, the actionability spectrum needs a fourth axis beyond individual feedback — *whose* constraint violation is being shown, and to *whom*, changes the social dynamics of a group design session in ways that don't arise when the "user" is a single designer getting feedback on their own mockup. Making constraints visible and reactive should teach the whole group about the actual shape of the decision space, rather than any one person hitting an invisible wall alone. The paper formalizes this extension and tests whether groups experience constraint-reactive feedback differently than they would with a static rulebook or an unconstrained free-form editor.
 
-### Theoretical contribution 2: The artifact gap in civic participation
+### Theoretical contribution 2: Voice-first malleable interfaces for constrained physical domains
+
+Haijun's task-driven data model framework argues the right interface for a task is generated from the task's underlying data model, not a fixed menu. That framework has so far been applied to visual/spatial interfaces (Spacetime) and progressive disclosure of visual affordances (Gradual Generation). It has not been applied to voice. Voice interfaces in commercial and research CAD tools today are overwhelmingly command-grammar systems: a fixed, learnable vocabulary that itself becomes a new expertise gap for a first-time user. This paper argues that constraint-reactive malleability, applied to voice, means the space of *sayable, actionable* things changes with the constraint graph and the multi-user editing state in real time — and tests whether this materially lowers the floor for non-expert, non-technical community members to actually author changes to a shared 3D model, versus a fixed-vocabulary voice command set or no voice modality at all.
+
+### Theoretical contribution 3: The artifact gap in civic participation
 
 The participatory planning literature documents extensively that digital tools have not moved communities up Arnstein's ladder despite decades of effort. Existing explanations: lack of access, lack of trust, tokenistic process design. I am proposing a different, previously unarticulated explanation: the missing element is not voice or access. It is the design artifact.
 
@@ -135,7 +141,7 @@ Three groups of community members from the same neighborhood, working on the sam
 
 - **Condition A — Current practice.** Site/constraint presentation followed by a comment session. What actually happens today.
 - **Condition B — Image generation (the WeDesign approach).** AI generates images of design proposals from verbal descriptions. People see options; they cannot edit them.
-- **Condition C — Our constraint-reactive 3D co-design system.** Full multi-user editing, real-time constraint feedback, proposal export.
+- **Condition C — Our constraint-reactive, voice-first 3D co-design system.** Full multi-user editing via voice and direct manipulation, real-time constraint feedback, proposal export.
 
 **What we measure**, deliberately reusing validated instruments from Dow's own prior work rather than inventing new ones from scratch:
 
@@ -145,6 +151,7 @@ Three groups of community members from the same neighborhood, working on the sam
 - **Collective vs. individual reasoning** — did participants consider impacts on neighbors, not just themselves? (BoundarEase showed this was a key benefit of well-designed civic tools.)
 - **Constraint comprehension** — do participants understand why certain design choices are or aren't available on their specific site? Do they leave with more knowledge of their own zoning situation?
 - **Agency and ownership** — do participants feel their input will matter, and that the process was fair?
+- **Voice-first accessibility across literacy and technical-comfort levels** — do participants who would never touch a CAD tool directly author meaningful changes via voice? Does the malleable (constraint-generated) voice interface outperform a fixed command grammar for first-time users specifically?
 
 ---
 
@@ -168,7 +175,17 @@ Steven's involvement is not a UI-polish role — it is where the paper's second 
 
 **On study infrastructure:** ProtoLab's stated method already spans "human-centered design, data science, qualitative methods, and system prototyping" — the mixed-methods rigor a 36-participant, three-condition study needs.
 
-A note on scope: the earlier draft of this proposal built in an XR/AR extension (VR walkthroughs, AR on-site viewing) as a natural follow-on paper. That is still a reasonable second project, but it depends on a different kind of infrastructure (headset hardware, on-site fieldwork logistics) than what Mai and Steven's current collaboration covers, so I am treating it as explicitly out of scope for this paper rather than implying a third collaborator who isn't actually attached to this proposal yet.
+### Haijun Xia
+
+Haijun's role is the interface architecture — and it is a scientific contribution, not a UI-polish pass. Two of his existing research lines are load-bearing here, not just cited:
+
+**His task-driven, malleable/generative UI framework** is the direct theoretical foundation for both Layer 2 (constraint feedback) and Layer 2.5 (voice). The claim that the right interface is generated from the task's data model rather than a fixed menu has been demonstrated for visual interfaces; this paper is the first application of that argument to voice, and to a domain — legally constrained physical space — where the "menu" isn't just inconvenient when wrong, it's a wall you can't move through.
+
+**His Spacetime research on multi-user collaborative 3D editing** is the direct foundation for the multi-user layer: how simultaneous edits, conflicting intents, and shared awareness are represented when several people manipulate the same 3D model at once. Community design sessions are inherently multi-user and often disagree in real time — this is precisely the interaction problem Spacetime was built to study, just with legal constraints and voice input layered on top.
+
+Practically, Haijun already collaborates with Steven's lab (they are co-authors on VizCrit, CHI'26), which means this is not an artificial three-way pairing — two of the three collaborators already have a working research relationship this project can build on directly.
+
+A note on scope: an XR/AR extension (VR walkthroughs, AR on-site viewing) remains a reasonable follow-on paper, given Haijun's and the broader group's interest in spatial computing. It depends on a different kind of infrastructure (headset hardware, on-site fieldwork logistics) than this paper's voice-first, browser-based system, so I am treating it as explicitly out of scope here rather than folding it in prematurely.
 
 ---
 
@@ -180,7 +197,7 @@ I would rather surface these now than discover them during peer review or after 
 
 **Risk 2 — Scope must be bounded.** If I try to solve zoning compliance for all cities simultaneously, I build nothing deployable. The right scope is San Diego specifically: one zoning code, real parcels, real pending decisions, real communities Mai and D4SD already have relationships with. Future work generalizes to other jurisdictions.
 
-**Risk 3 — The tool may reproduce the expertise gap in a new form.** Removing the legal-permissibility expertise gap could introduce a new expertise gap around operating a 3D spatial editor. The evaluation must explicitly measure whether participants across literacy/technical-comfort levels can produce meaningful designs, not just report average-case usability — this is where ProtoLab's experience scaffolding non-expert creative participation (crowds, students, community members) is the operative expertise, not a separate accessibility specialization.
+**Risk 3 — The tool may reproduce the expertise gap in a new form.** Removing the legal-permissibility expertise gap could introduce a new expertise gap around operating a 3D spatial editor. Voice-first interaction, generated from the constraint graph rather than a fixed command grammar (Haijun's contribution), is the primary mechanism for addressing this, and ProtoLab's experience scaffolding non-expert creative participation (crowds, students, community members) is the operative expertise for evaluating whether it actually works. The evaluation must explicitly measure whether participants across literacy/technical-comfort levels can produce meaningful designs by voice, not just report average-case usability.
 
 **Risk 4 — The proposal export may not have real planning standing.** Whether San Diego planning authorities will actually accept a Pascal-exported document (or its IFC export) as a formal public comment or counter-proposal requires early coordination with Mai's city contacts to establish what format and content is needed. This is a design constraint on the export layer, not something to figure out after the system is built.
 
@@ -188,9 +205,9 @@ I would rather surface these now than discover them during peer review or after 
 
 ## What You Get from Me
 
-The primary deliverable is a full ACM CHI 2028 paper, from first draft to camera-ready. I will write it, run the HCI-side literature review, and manage submission logistics and reviewer correspondence. Mai and Steven shape the intellectual direction and provide the domain grounding and community/methodological legitimacy. The writing and process management are mine to own.
+The primary deliverable is a full ACM CHI 2027 paper, from first draft to camera-ready. I will write it, run the HCI-side literature review, and manage submission logistics and reviewer correspondence. Mai and Steven shape the intellectual direction and provide the domain grounding and community/methodological legitimacy. The writing and process management are mine to own.
 
-The second deliverable is the design tool itself, built to a standard I'd describe as the best community spatial design tool published at CHI in 2028 — not a prototype that only runs under controlled conditions, but a system rigorous enough that CHPD (and D4SD) can hand it to a real community group in a real planning session and have it work. The constraint model is grounded in actual San Diego zoning data, not mocked. Multi-user editing is stable under real session conditions. The proposal export produces a document a planning commissioner would take seriously.
+The second deliverable is the design tool itself, built to a standard I'd describe as the best community spatial design tool published at CHI in 2027 — not a prototype that only runs under controlled conditions, but a system rigorous enough that CHPD (and D4SD) can hand it to a real community group in a real planning session and have it work. The constraint model is grounded in actual San Diego zoning data, not mocked. Multi-user editing is stable under real session conditions. The proposal export produces a document a planning commissioner would take seriously.
 
 Both are on me to deliver. I am not asking for engineering help, writing support, or production work — I am asking for expertise and mentorship.
 
@@ -212,7 +229,7 @@ An hour with each of you, separately or together, to pressure-test this. Where i
 
 Before that meeting I can prepare a detailed technical architecture document, a draft Phase 1 protocol, and a clearer articulation of the constraint-feedback argument with full references to the VizCrit and Value-Centered Framing lines of work.
 
-If this direction seems promising, I will propose starting the formative study this fall — community outreach and IRB preparation over the next couple of months — targeting the ACM CHI 2028 submission cycle.
+If this direction seems promising, I will propose starting the formative study this fall — community outreach and IRB preparation over the next couple of months — targeting the ACM CHI 2027 January submission deadline.
 
 Thank you for reading this. I've tried to be honest about what is speculative and what is concrete. The paper proposal is my best current thinking on where the contribution lives. What comes next is the conversation.
 
