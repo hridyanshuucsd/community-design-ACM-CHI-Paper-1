@@ -2,6 +2,8 @@
 
 This document recommends specific, real, currently-maintained open-source projects to integrate alongside the Pascal editor (github.com/pascalorg/editor, React Three Fiber + WebGPU, MIT) across the four subsystems the CHI proposal needs: (1) real-time multi-user sync, (2) zoning/parcel data grounding, (3) voice/speech pipeline, (4) IFC/BIM compliance export. Each entry gives concrete integration notes against Pascal's `@pascal-app/core` Zustand store and systems pattern, and flags licensing conflicts against Pascal's MIT baseline.
 
+**Pivot flag (2026-07-28):** section 2 (zoning/parcel data grounding) below was scoped against US/San Diego sources (zoning APIs, HCD-style permit data, city GIS portals). The field site is now Delhi–NCR (Noida), India, so that section needs a fresh pass for Indian sources instead — e.g. Noida Authority building-bylaw documents, UP-RERA project filings, and any open municipal/state GIS data for Uttar Pradesh, rather than the US-specific sources listed here. Sections 1, 3, and 4 (sync, voice/speech, IFC/BIM) are not geography-specific and should still hold, with the voice/speech section additionally needing a Hindi/English code-switching capability check that wasn't scoped in the original search.
+
 ---
 
 ## 1. Real-Time Multi-User Sync

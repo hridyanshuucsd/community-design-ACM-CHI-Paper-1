@@ -3,6 +3,8 @@
 
 *Section-by-section architecture for the full paper. Each study component (formative study; each of the 3 conditions in the main study) includes an explicit, falsifiable statement of what a successful result looks like and what a null/negative result looks like, per the pre-submission rigor audit. "PARCEL" (Participatory Architecture for Real-time Community-Enabled Layout) is the working name for the Pascal-based tool; rename freely.*
 
+**Pivot flag (2026-07-28): this document was written when the field site was San Diego.** The field site has since moved to Delhi–NCR (Noida), India, with a domain shift from zoning/rezoning disputes to group-housing-society redevelopment disputes (see proposal.md). The methodological skeleton below (N sizes, between-subjects design, 3-condition actionability manipulation, pre-registration plan, baseline justification) still holds and does not need rework. What is now stale and needs a fresh pass before this is submission-ready: every mention of "San Diego," "zoning"/"rezoning," "ADU"/"HCD permit data," and "planning commission" below should read as Noida Authority building bylaws, FSI/setback norms, and redevelopment/RWA stakeholder processes instead; "two real or realistically-modeled San Diego infill parcels" should become two real or realistically-modeled Noida/Greater Noida group housing society redevelopment sites; and any recruitment-pipeline language tied to CHPD/Design for San Diego should be replaced with the formative-study recruitment plan described in proposal.md (personal local contacts, not an existing institutional pipeline).
+
 ---
 
 ## 0. Framing Decisions Made to Use This Structure (state these explicitly in the paper)
