@@ -3,11 +3,13 @@ RESEARCH PROPOSAL
 # From Consultation to Coauthorship
 ### A Collaborative 3D Design Tool for Community Spatial Agency in Urban Planning
 
-**Hridyanshu**
-UC San Diego, Mathematics and Computer Science B.S.
-**Proposed for: ACM CHI 2027 (submission deadline January 2027)**
-**Proposed mentors and collaborators: Mai Thi Nguyen, Steven Dow, Haijun Xia**
-**Field site: Delhi NCR (Noida), India**
+**Hridyanshu** | UC San Diego, Mathematics and Computer Science B.S.
+
+Proposed for: **ACM CHI 2027**
+
+Proposed mentors and collaborators: **Mai Thi Nguyen**, **Steven Dow**, **Haijun Xia**
+
+Field site: **Delhi NCR (Noida), India**, with potential to also include **San Diego** as a site for one of the experiments
 
 ---
 
@@ -143,6 +145,8 @@ Three groups of community members from the same neighborhood, working on the sam
 - **Condition A: Current practice.** Site and constraint presentation followed by a comment session. What actually happens today.
 - **Condition B: Image generation, the WeDesign approach.** AI generates images of design proposals from verbal descriptions. People see options. They cannot edit them.
 - **Condition C: Our constraint reactive, voice first 3D codesign system.** Full multiuser editing via voice and direct manipulation, real time constraint feedback, proposal export.
+
+I am also leaving open the possibility of running one of these conditions, or a parallel replication of Condition C, on a San Diego site through CLARO, alongside the Noida sessions rather than only as future work after publication. Whether that is worth the added complexity for this specific paper, versus staying single site, is exactly the kind of call I want Mai's and Steven's judgment on before committing to it.
 
 **What we measure**, deliberately reusing validated instruments from Dow's own prior work rather than inventing new ones from scratch:
 
