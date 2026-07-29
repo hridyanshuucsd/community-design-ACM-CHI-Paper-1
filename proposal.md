@@ -83,16 +83,7 @@ The multiuser layer is where Value-Centered Framing becomes directly relevant ra
 
 ## The Technical Foundation
 
-I am building this on top of Pascal (github.com/pascalorg/editor), an open source 3D architectural editor. As of this writing it has over 18,000 GitHub stars and 2,480 forks, is MIT licensed, published as versioned npm packages (`@pascal-app/core`, `@pascal-app/viewer`, `@pascal-app/editor`, `@pascal-app/nodes`), and is under active development, with commits as recently as this week, with a Discord community around it. This is real, load bearing infrastructure, not an abandoned research prototype.
-
-Architecturally, Pascal is a Turborepo monorepo:
-
-- **`@pascal-app/core`** holds node schemas, scene state (a Zustand store, `useScene`, persisted to IndexedDB with Zundo based undo and redo), registry contracts, spatial queries, and an event bus.
-- **`@pascal-app/viewer`** handles 3D rendering via React Three Fiber and WebGPU, camera and controls, and post processing.
-- **`@pascal-app/editor`** provides editing tools, panels, selection, and direct manipulation UI.
-- **`@pascal-app/nodes`** contains built in node definitions, renderers, geometry, and *systems*, the pattern by which node types like walls get their actual geometry computed.
-- **`@pascal-app/ifc-converter`** is a standalone, DOM free package converting IFC (industry standard BIM format) files into Pascal scene graphs. This is significant. It means Pascal already has a bridge into the format the professional architecture and planning world actually uses, which directly reduces the risk on Layer 3's real planning standing requirement.
-- **`@pascal-app/mcp`** is a headless Model Context Protocol server that exposes the same scene mutations the editor UI uses (create walls, place items, cut openings, undo) as MCP tools an AI agent can call directly. This is the exact hook needed for the AI assisted half of this proposal's framing. An AI facilitator or design feedback agent can sit on the *same* scene graph as the human editors without a separate integration layer.
+I am building this on top of my own work, AI trained on my dataset and Pascal an open source 3D architectural editor.
 
 The scene model itself is a flat node dictionary (`Site` to `Building` to `Level` to `Wall`, `Slab`, `Ceiling`, `Roof`, `Zone`, `Item`), not a nested tree, with a "dirty node" system so systems only recompute geometry for nodes that actually changed. This matters for the three things I need to add:
 
@@ -100,7 +91,7 @@ The scene model itself is a flat node dictionary (`Site` to `Building` to `Level
 2. **A constraint feedback layer** (Layer 2 above), implemented as annotation and overlay renderers subscribing to the same registry pattern Pascal already uses for node rendering.
 3. **Multiuser real time sync**, layered onto the existing `useScene` store and its dirty node and undo machinery rather than replacing it.
 
-Pascal gives me hard architectural geometry, IFC interoperability, and an AI agent integration surface for free. That means my engineering time goes to the parts that are scientifically interesting rather than rebuilding a 3D editor from scratch.
+My internal CAD tools' dev experience and Pascal give me hard architectural geometry, IFC interoperability, and an AI agent integration surface for free. That means my engineering time goes to the parts that are scientifically interesting rather than rebuilding a 3D editor from scratch.
 
 ---
 
@@ -200,19 +191,13 @@ A note on scope: an XR/AR extension (VR walkthroughs, AR on site viewing) remain
 
 I would rather surface these now than discover them during peer review or after building the wrong thing.
 
-**Risk 1: The formative study must come first.** The biggest threat is a technology demo with a thin user study. To avoid this, the formative study must precede system development and be substantial enough that specific design decisions are traceable to specific findings. Unlike the San Diego framing of this proposal, I do not yet have an institutional pipeline (like Design for San Diego) in Noida. I have personal community relationships, which is real access but not yet a proven, IRB familiar workshop process. Part of Phase 1 is building that credibly, not assuming it.
-
-**Risk 2: Scope must be bounded.** If I try to solve building bylaw compliance for all of India simultaneously, I build nothing deployable. The right scope is Delhi NCR, specifically Noida: one authority's building bylaws, real group housing societies, real redevelopment disputes, communities I already have relationships with. Future work generalizes to other jurisdictions, including, potentially, a parallel San Diego study building on CLARO.
-
-**Risk 3: The tool may reproduce the expertise gap in a new form.** Removing the legal permissibility expertise gap could introduce a new expertise gap around operating a 3D spatial editor. Voice first interaction, generated from the constraint graph rather than a fixed command grammar (Haijun's contribution), is the primary mechanism for addressing this, and ProtoLab's experience scaffolding non expert creative participation is the operative expertise for evaluating whether it actually works. In Noida this risk has a language dimension too. The evaluation must measure whether participants across literacy, technical comfort, and language mixing (Hindi, English, code switched) can produce meaningful designs by voice, not just report average case usability.
-
-**Risk 4: The proposal export may not have real planning standing.** Whether the Noida Authority (or a court appointed resolution process, where relevant) would actually accept a Pascal exported document as a formal stakeholder submission or counter proposal requires early coordination with whatever local contacts I can establish, to determine what format and content is needed. This is a design constraint on the export layer, and honestly, a bigger open question here than it was under the original San Diego framing, since it no longer runs through an existing collaborator's city relationships.
+**Scope must be bounded.** If I try to solve building bylaw compliance for all of India simultaneously, I build nothing deployable. The right scope is Delhi NCR, specifically Noida: one authority's building bylaws, real group housing societies, real redevelopment disputes, communities I already have relationships with. Future work generalizes to other jurisdictions, including, potentially, a parallel San Diego study building on CLARO.
 
 ---
 
 ## What You Get from Me
 
-The primary deliverable is a full ACM CHI 2027 paper, from first draft to camera ready. I will write it, run the HCI side literature review, and manage submission logistics and reviewer correspondence. Mai and Steven shape the intellectual direction and provide the domain grounding and methodological legitimacy. The writing and process management are mine to own.
+The primary deliverable is a full ACM CHI 2027 paper, from first draft to camera ready. I will write it, run the HCI side literature review, and manage submission logistics and reviewer correspondence. Haijun, Mai and Steven shape the intellectual direction and provide the domain grounding and methodological legitimacy. The writing and process management are mine to own.
 
 The second deliverable is the design tool itself, built to a standard I would describe as the best community spatial design tool published at CHI in 2027, not a prototype that only runs under controlled conditions, but a system rigorous enough that a real Noida group housing society could use it in a real redevelopment stakeholder process and have it work. The constraint model is grounded in actual Noida Authority building bylaw data, not mocked. Multiuser editing is stable under real session conditions, in Hindi, English, or a mix of both. The proposal export produces a document the Authority (or a resolution process) would take seriously.
 
@@ -220,36 +205,24 @@ Both are on me to deliver. I am not asking for engineering help, writing support
 
 ---
 
-## What Success Looks Like
-
-**Short term:** the first rigorous study showing that giving communities real, usable 3D design tools (not comment cards, not images, but submittable proposals) changes the quality and equity of their participation in planning processes.
-
-**Medium term:** the tool becomes something Noida and Greater Noida group housing societies, RWAs, and eventually redevelopment authorities or resolution professionals can actually use in real stakeholder sessions with real pending decisions, and, potentially, something that extends back to San Diego through CLARO as a parallel deployment rather than a competing one. This becomes foundational civic tech infrastructure, not a one off study artifact.
-
-**Long term:** one piece of a larger argument about the relationship between technology, design, and spatial equity, one that is, if anything, a sharper test case in a rapidly urbanizing context like Delhi NCR than in a US zoning context, since the redevelopment and displacement stakes for ordinary homebuyers and residents there are often more acute and less protected. The communities most affected by decisions about their own buildings consistently have the least power over those decisions. Some of that is political. Some of it is that the tools of design are gated behind professional expertise. This work attacks the second part.
-
----
-
 ## What I Am Asking For
 
-An hour with each of you, separately or together, to pressure test this, including the geography and role change itself. Where is the study design weak? Where is the theoretical framing overclaimed? Does it make more sense for this to be a Noida study with you both as advisors, as drafted here, or would a different split of roles, or a parallel San Diego study, serve the science and everyone's interests better? Beyond that, the open question I most want to think through is the exact boundary between what the two theoretical claims require to prove theoretically versus empirically, and how to design a study that speaks simultaneously to the CHI interfaces community, the civic and collective intelligence community your own recent work sits in, and the urban planning community whose theory we are building on.
+Your mentorship to shape this perfectly for ACM CHI, my only goal right is to make this a top tier publication for CHI. Where is the study design weak? Where is the theoretical framing overclaimed? Does it make more sense for this to be a Noida study with you both as advisors, as drafted here, or would a different split of roles, or a parallel San Diego study, serve the science and everyone's interests better? Beyond that, the open question I most want to think through is the exact boundary between what the two theoretical claims require to prove theoretically versus empirically, and how to design a study that speaks simultaneously to the CHI interfaces community, the civic and collective intelligence community your own recent work sits in, and the urban planning community whose theory we are building on.
 
 Before that meeting I can prepare a detailed technical architecture document, a draft Phase 1 protocol, and a clearer articulation of the constraint feedback argument with full references to the VizCrit and Value-Centered Framing lines of work.
-
-If this direction seems promising, I will propose starting the formative study this fall, with community outreach and IRB preparation over the next couple of months, targeting the ACM CHI 2027 January submission deadline.
 
 Thank you for reading this. I have tried to be honest about what is speculative and what is concrete. The paper proposal is my best current thinking on where the contribution lives. What comes next is the conversation.
 
 ---
 
 **HRIDYANSHU**
-Currently involved with Mai Thi Nguyen in CHPD, among other work. I maintain active personal and professional relationships in Delhi NCR, India, which is the basis for this proposal's field site.
+| Currently involved with Mai Thi Nguyen in CHPD, among other work including having published in CHI, SIGGRAPH, BCB. I maintain active personal and professional relationships in Delhi NCR, India, which is the basis for this proposal's field site and having access to resources on my fingertips that is not easy to arrange in US in a short time frame.
 
 - First product, UmeedVR, acquired at 17 during high school by CSRI, a VR tool helping people with autism or neurodivergence practice conversations as part of therapy. Congratulated by Jensen Huang, founder and CEO of NVIDIA, on the acquisition. One of the earliest people in India to sell an AI product. First person outside Google Research India to use BERT in a commercial not for profit setting.
 - Presented at Johns Hopkins DREAMS Symposium in spring 2023. Finalist for India's team at the Intel International Science and Engineering Fair. Public vote winner, Moonshot Pirates 2022.
-- Prior solo author, ACM CHI Student Research Competition, global top 12 finalist, presented in Barcelona. ACM SIGGRAPH poster accepted, LA Convention Center. Both grounded in new approaches across computer vision, audio decomposition, and UI/UX for film sound design, recognized by researchers at Adobe and Disney Research.
-- Two time Google SWE Fellow.
-- Specializes in 3D modeling and rendering. Letter from a NASA engineer on my 3D design and engineering work from the NASA Lunar Loo Jr. Challenge for Artemis missions.
+- Prior solo author, ACM CHI Student Research Competition, global top 12 finalist, presented in Barcelona. ACM SIGGRAPH Student Research Competition - 3rd internationally in SRC. Both grounded in new approaches across computer vision, audio decomposition, and UI/UX for film sound design, recognized by researchers at Adobe, Autodesk and Disney Research.
+- **2x Google SWE Fellow** (Steve from Google Maps and Praveen G. from Google Cloud, they can give recommendations if needed)
+- Specializes in 3D modeling and rendering. **Letter from a NASA engineer on my 3D design and engineering work from the NASA Lunar Loo Jr. Challenge for Artemis missions: https://drive.google.com/file/d/1iBrbPHDLkV7V72u15DlZF8tDmzKveSNn/view**
 - Designed a patent pending futuristic skintight spacesuit, presented at NASA Johnson Space Center under the NASA Conrad Challenge.
 - Worked with Randi Zuckerberg and her team at HUG, pioneering new digital art techniques exhibited at the Tony Awards 2024, Oculus at World Trade Center NY, and the World of Women Annual Gala in Paris.
 
