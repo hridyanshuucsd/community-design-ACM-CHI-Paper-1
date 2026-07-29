@@ -3,8 +3,6 @@
 
 *Section-by-section architecture for the full paper. Each study component (formative study; each of the 3 conditions in the main study) includes an explicit, falsifiable statement of what a successful result looks like and what a null/negative result looks like, per the pre-submission rigor audit. "PARCEL" (Participatory Architecture for Real-time Community-Enabled Layout) is the working name for the Pascal-based tool; rename freely.*
 
-**Field site note:** this structure is written for the current field site, Delhi NCR (Noida), India, with the domain being group housing society redevelopment disputes (see proposal.md), not the zoning/rezoning framing an earlier draft used. The methodological skeleton (N sizes, between subjects design, 3 condition actionability manipulation, pre-registration plan, baseline justification) is unchanged by that shift.
-
 ---
 
 ## 0. Framing Decisions Made to Use This Structure (state these explicitly in the paper)
