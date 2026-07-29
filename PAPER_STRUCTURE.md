@@ -1,7 +1,7 @@
 # CHI 2027 Paper Structure
 ## Working Title: "PARCEL: Voice-First, Multi-User 3D Co-Design for Community-Authored Alternatives to Developer Proposals"
 
-*Section-by-section architecture for the full paper. Each study component (formative study; each of the 3 conditions in the main study) includes an explicit, falsifiable statement of what a successful result looks like and what a null/negative result looks like, per the pre-submission rigor audit. "PARCEL" (Participatory Architecture for Real-time Community-Enabled Layout) is the working name for the Pascal-based tool; rename freely.*
+*Section-by-section architecture for the full paper. Each study component (formative study; each of the 3 conditions in the main study) includes an explicit, falsifiable statement of what a successful result looks like and what a null/negative result looks like, per the pre-submission rigor audit. "PARCEL" (Participatory Architecture for Real-time Community-Enabled Layout) is the working name for the tool; rename freely.*
 
 ---
 
