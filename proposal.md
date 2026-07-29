@@ -83,16 +83,7 @@ The multiuser layer is where Value-Centered Framing becomes directly relevant ra
 
 ## The Technical Foundation
 
-I am building this on top of Pascal (github.com/pascalorg/editor), an open source 3D architectural editor. As of this writing it has over 18,000 GitHub stars and 2,480 forks, is MIT licensed, published as versioned npm packages (`@pascal-app/core`, `@pascal-app/viewer`, `@pascal-app/editor`, `@pascal-app/nodes`), and is under active development, with commits as recently as this week, with a Discord community around it. This is real, load bearing infrastructure, not an abandoned research prototype.
-
-Architecturally, Pascal is a Turborepo monorepo:
-
-- **`@pascal-app/core`** holds node schemas, scene state (a Zustand store, `useScene`, persisted to IndexedDB with Zundo based undo and redo), registry contracts, spatial queries, and an event bus.
-- **`@pascal-app/viewer`** handles 3D rendering via React Three Fiber and WebGPU, camera and controls, and post processing.
-- **`@pascal-app/editor`** provides editing tools, panels, selection, and direct manipulation UI.
-- **`@pascal-app/nodes`** contains built in node definitions, renderers, geometry, and *systems*, the pattern by which node types like walls get their actual geometry computed.
-- **`@pascal-app/ifc-converter`** is a standalone, DOM free package converting IFC (industry standard BIM format) files into Pascal scene graphs. This is significant. It means Pascal already has a bridge into the format the professional architecture and planning world actually uses, which directly reduces the risk on Layer 3's real planning standing requirement.
-- **`@pascal-app/mcp`** is a headless Model Context Protocol server that exposes the same scene mutations the editor UI uses (create walls, place items, cut openings, undo) as MCP tools an AI agent can call directly. This is the exact hook needed for the AI assisted half of this proposal's framing. An AI facilitator or design feedback agent can sit on the *same* scene graph as the human editors without a separate integration layer.
+I am building this on top of my own work, AI trained on my dataset and Pascal an open source 3D architectural editor.
 
 The scene model itself is a flat node dictionary (`Site` to `Building` to `Level` to `Wall`, `Slab`, `Ceiling`, `Roof`, `Zone`, `Item`), not a nested tree, with a "dirty node" system so systems only recompute geometry for nodes that actually changed. This matters for the three things I need to add:
 
@@ -100,7 +91,7 @@ The scene model itself is a flat node dictionary (`Site` to `Building` to `Level
 2. **A constraint feedback layer** (Layer 2 above), implemented as annotation and overlay renderers subscribing to the same registry pattern Pascal already uses for node rendering.
 3. **Multiuser real time sync**, layered onto the existing `useScene` store and its dirty node and undo machinery rather than replacing it.
 
-Pascal gives me hard architectural geometry, IFC interoperability, and an AI agent integration surface for free. That means my engineering time goes to the parts that are scientifically interesting rather than rebuilding a 3D editor from scratch.
+My internal CAD tools' dev experience and Pascal give me hard architectural geometry, IFC interoperability, and an AI agent integration surface for free. That means my engineering time goes to the parts that are scientifically interesting rather than rebuilding a 3D editor from scratch.
 
 ---
 
