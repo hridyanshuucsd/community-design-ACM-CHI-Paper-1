@@ -3,13 +3,11 @@ RESEARCH PROPOSAL
 # From Consultation to Coauthorship
 ### A Collaborative 3D Design Tool for Community Spatial Agency in Urban Planning
 
-**Hridyanshu** | UC San Diego, Mathematics and Computer Science B.S.
+**Hridyanshu**, UC San Diego, Mathematics and Computer Science B.S.
 
-Proposed for: **ACM CHI 2027**
-
-Proposed mentors and collaborators: **Mai Thi Nguyen**, **Steven Dow**, **Haijun Xia**
-
-Field site: **Delhi NCR (Noida), India**, with potential to also include **San Diego** as a site for one of the experiments
+#### Proposed for: **ACM CHI 2027**
+#### Proposed mentors and collaborators: **Mai Thi Nguyen**, **Steven Dow**, **Haijun Xia**
+#### Field site: **Delhi NCR (Noida), India**, with potential to also include **San Diego** as a site for one of the experiments
 
 ---
 
